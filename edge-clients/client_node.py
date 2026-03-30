@@ -13,7 +13,7 @@ from model import CSOP_GRU
 # --- BDS & FL CONFIGURATION ---
 KAFKA_BROKER = 'localhost:9092'
 TOPIC_NAME = 'local_model_updates'
-DATA_FOLDER = './guangzhou_train/*.xlsx'
+DATA_FOLDER = os.path.join(os.path.dirname(__file__), 'guangzhou_train', '*.xlsx')
 
 def tensor_to_list(state_dict):
     """Converts PyTorch tensors to standard Python lists for Kafka JSON serialization"""
@@ -48,8 +48,7 @@ def train_local_reptile(df, current_global_weights=None, k_steps=5, learning_rat
     # 2. Initialize Model
     local_model = CSOP_GRU()
     if current_global_weights:
-        # In a full loop, you load the weights downloaded from the server here
-        pass 
+        local_model.load_state_dict(current_global_weights)
         
     criterion = nn.MSELoss()
     optimizer = optim.Adam(local_model.parameters(), lr=learning_rate)
@@ -63,40 +62,72 @@ def train_local_reptile(df, current_global_weights=None, k_steps=5, learning_rat
         loss.backward()
         optimizer.step()
         
-    return local_model.state_dict(), len(data_values)
+    local_state = local_model.state_dict()
+    if current_global_weights is not None:
+        meta_lr = 0.1 # Adaptive Reptile beta step-size
+        final_weights = {}
+        for name, param in local_state.items():
+            final_weights[name] = current_global_weights[name] + meta_lr * (param - current_global_weights[name])
+        return final_weights, len(data_values)
+    else:
+        return local_state, len(data_values)
 
 def start_federated_clients():
     print("[*] Initializing Edge Nodes for Asynchronous Federated Learning...")
-    producer = KafkaProducer(bootstrap_servers=[KAFKA_BROKER], value_serializer=json_serializer)
+    try:
+        producer = KafkaProducer(
+            bootstrap_servers=[KAFKA_BROKER], 
+            value_serializer=json_serializer,
+            api_version_auto_timeout_ms=5000,
+            request_timeout_ms=10000,
+            max_request_size=5 * 1024 * 1024,  # 5MB — model weights are ~1.4MB per message
+            buffer_memory=50 * 1024 * 1024  # 50MB buffer for 50 rounds
+        )
+    except Exception as e:
+        print(f"\n[CRITICAL ERROR] Could not connect to Apache Kafka at {KAFKA_BROKER}.")
+        print("[!] The AFML pipeline requires Kafka to be running to transfer model weights.")
+        print("[!] Please run `sudo docker compose up -d` in the root EV-smart-grid directory.")
+        print(f"[!] System Error detail: {e}")
+        return
     
     all_files = glob.glob(DATA_FOLDER)
-    global_round = 1 # Simulating the first global training round
     
-    for file in all_files:
-        station_id = os.path.basename(file).split('.')[0]
-        df = pd.read_excel(file)
+    # To simulate real AFML, try to load the latest global weights from the shared root
+    global_model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'global_meta_model.pth')
+    
+    for global_round in range(1, 501):
+        print(f"\n================ [Global Round {global_round}] ================")
         
-        print(f"\n[*] Station {station_id} initiating local Adaptive Reptile training...")
-        
-        # Run local training
-        local_weights, data_size = train_local_reptile(df, k_steps=5)
-        
-        if local_weights is None: continue
-        
-        # Construct the AFML Payload
-        payload = {
-            "station_id": station_id,
-            "S_j": data_size,                 # Information Richness parameter
-            "C_j": global_round,              # Information Staleness parameter
-            "weights": tensor_to_list(local_weights), # The actual learned knowledge
-            "timestamp": str(datetime.now())
-        }
-        
-        # Fire weights to Kafka
-        producer.send(TOPIC_NAME, value=payload)
-        print(f"[+] KAFKA STREAM -> Uploaded local model parameters for {station_id} (Data Size: {data_size})")
-        
-        time.sleep(2) # Simulate asynchronous network delay between stations finishing
+        for file in all_files:
+            station_id = os.path.basename(file).split('.')[0]
+            df = pd.read_excel(file)
+            
+            print(f"[*] Station {station_id} initiating local Adaptive Reptile training...")
+            
+            # In this 'real' environment, fetch current global weights every round if they exist
+            current_weights = None
+            if os.path.exists(global_model_path):
+                current_weights = torch.load(global_model_path, map_location='cpu')
+                
+            # Run local training
+            local_weights, data_size = train_local_reptile(df, current_global_weights=current_weights, k_steps=5)
+            
+            if local_weights is None: continue
+            
+            # Construct the AFML Payload
+            payload = {
+                "station_id": station_id,
+                "S_j": data_size,                 # Information Richness parameter
+                "C_j": global_round,              # Information Staleness parameter
+                "weights": tensor_to_list(local_weights), # The actual learned knowledge
+                "timestamp": str(datetime.now())
+            }
+            
+            # Fire weights to Kafka
+            producer.send(TOPIC_NAME, value=payload)
+            print(f"[+] KAFKA STREAM -> Uploaded local model parameters for {station_id} (Data Size: {data_size})")
+            
+            time.sleep(1) # Simulate asynchronous network delay between stations finishing
 
 if __name__ == "__main__":
     start_federated_clients()

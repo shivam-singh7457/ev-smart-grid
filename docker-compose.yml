@@ -26,6 +26,9 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_MESSAGE_MAX_BYTES: 5242880           # 5MB — model weights are ~1.4MB
+      KAFKA_MAX_REQUEST_SIZE: 5242880
+      KAFKA_REPLICA_FETCH_MAX_BYTES: 5242880
 
   # --- MONGODB: The NoSQL Sink ---
   # BDS Flex: Capable of handling massive, unstructured JSON writes from Spark.
