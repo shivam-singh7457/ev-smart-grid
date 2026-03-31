@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class CSOP_GRU(nn.Module):
-    def __init__(self, input_dim=1, hidden_dim=64, num_layers=3, output_dim=1):
+    def __init__(self, input_dim=4, hidden_dim=64, num_layers=3, output_dim=1):
         super(CSOP_GRU, self).__init__()
         
         # Three GRU Layers as evaluated in the paper

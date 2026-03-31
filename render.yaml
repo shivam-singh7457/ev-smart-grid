@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: afml-backend
+    env: node
+    plan: free
+    buildCommand: npm install && cd .. && pip install torch pandas numpy
+    startCommand: node server.js
+    envVars:
+      - key: MONGO_URI
+        fromDatabase:
+          name: afml-db
+          property: connectionString
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: afml-db
+    plan: free
+    type: mongodb

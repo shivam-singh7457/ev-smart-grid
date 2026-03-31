@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply bg-navy-dark text-slate-100 antialiased overflow-hidden;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-slate-tech/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+  }
+  
+  .tech-button {
+    @apply px-4 py-2 bg-neon-blue hover:bg-neon-cyan text-white text-xs font-bold rounded-lg transition-all duration-300 transform active:scale-95;
+  }
+
+  .tech-badge {
+    @apply px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest border;
+  }
+
+  /* Custom marker sizing for react-leaflet */
+  .leaflet-container {
+    @apply w-full h-full bg-[#1e293b] rounded-none !important;
+    z-index: 0;
+    cursor: crosshair;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full;
+  }
+}
+
+/* Marker effects */
+.marker-pulsing {
+  @apply animate-pulse-glow;
+}
+
+.marker-idle {
+  @apply bg-status-idle shadow-[0_0_15px_rgba(16,185,129,0.7)];
+}
+
+.marker-busy {
+  @apply bg-status-busy shadow-[0_0_15px_rgba(239,68,68,0.7)];
+}

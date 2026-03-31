@@ -1,0 +1,632 @@
+[
+  {
+    "stationId": "ST-001",
+    "name": "Guangzhou Hub 1",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.23751465918455,
+        22.912505377611332
+      ]
+    },
+    "totalPiles": 24,
+    "neighbors": [
+      "ST-006",
+      "ST-027",
+      "ST-031"
+    ]
+  },
+  {
+    "stationId": "ST-002",
+    "name": "Shenzhen Hub 2",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.1444006468006,
+        22.440998070468602
+      ]
+    },
+    "totalPiles": 44,
+    "neighbors": [
+      "ST-021",
+      "ST-017",
+      "ST-010"
+    ]
+  },
+  {
+    "stationId": "ST-003",
+    "name": "Shenzhen Hub 3",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.71787833166285,
+        22.568768727874108
+      ]
+    },
+    "totalPiles": 23,
+    "neighbors": [
+      "ST-032",
+      "ST-005",
+      "ST-024"
+    ]
+  },
+  {
+    "stationId": "ST-004",
+    "name": "Shenzhen Hub 4",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.03674703776316,
+        22.64080749161999
+      ]
+    },
+    "totalPiles": 44,
+    "neighbors": [
+      "ST-025",
+      "ST-019",
+      "ST-010"
+    ]
+  },
+  {
+    "stationId": "ST-005",
+    "name": "Shenzhen Hub 5",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.8669144249384,
+        22.579683618513542
+      ]
+    },
+    "totalPiles": 10,
+    "neighbors": [
+      "ST-008",
+      "ST-032",
+      "ST-014"
+    ]
+  },
+  {
+    "stationId": "ST-006",
+    "name": "Guangzhou Hub 6",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.31130719907675,
+        22.979829658188443
+      ]
+    },
+    "totalPiles": 27,
+    "neighbors": [
+      "ST-001",
+      "ST-031",
+      "ST-015"
+    ]
+  },
+  {
+    "stationId": "ST-007",
+    "name": "Shenzhen Hub 7",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.90195672706757,
+        22.782885228882712
+      ]
+    },
+    "totalPiles": 15,
+    "neighbors": [
+      "ST-026",
+      "ST-023",
+      "ST-019"
+    ]
+  },
+  {
+    "stationId": "ST-008",
+    "name": "Shenzhen Hub 8",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.90637343348739,
+        22.54359175219385
+      ]
+    },
+    "totalPiles": 26,
+    "neighbors": [
+      "ST-005",
+      "ST-014",
+      "ST-032"
+    ]
+  },
+  {
+    "stationId": "ST-009",
+    "name": "Guangzhou Hub 9",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.36811404572734,
+        23.264865893346908
+      ]
+    },
+    "totalPiles": 34,
+    "neighbors": [
+      "ST-030",
+      "ST-033",
+      "ST-028"
+    ]
+  },
+  {
+    "stationId": "ST-010",
+    "name": "Shenzhen Hub 10",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.07718387969666,
+        22.517271312562837
+      ]
+    },
+    "totalPiles": 33,
+    "neighbors": [
+      "ST-035",
+      "ST-017",
+      "ST-021"
+    ]
+  },
+  {
+    "stationId": "ST-011",
+    "name": "Guangzhou Hub 11",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.12291219182782,
+        23.25228591810746
+      ]
+    },
+    "totalPiles": 24,
+    "neighbors": [
+      "ST-028",
+      "ST-033",
+      "ST-030"
+    ]
+  },
+  {
+    "stationId": "ST-012",
+    "name": "Guangzhou Hub 12",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.52765886050757,
+        23.392610760330378
+      ]
+    },
+    "totalPiles": 16,
+    "neighbors": [
+      "ST-034",
+      "ST-009",
+      "ST-030"
+    ]
+  },
+  {
+    "stationId": "ST-013",
+    "name": "Shenzhen Hub 13",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.20046625598445,
+        22.581364120947374
+      ]
+    },
+    "totalPiles": 20,
+    "neighbors": [
+      "ST-020",
+      "ST-017",
+      "ST-022"
+    ]
+  },
+  {
+    "stationId": "ST-014",
+    "name": "Shenzhen Hub 14",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.86018669322947,
+        22.483802812308593
+      ]
+    },
+    "totalPiles": 14,
+    "neighbors": [
+      "ST-008",
+      "ST-018",
+      "ST-032"
+    ]
+  },
+  {
+    "stationId": "ST-015",
+    "name": "Guangzhou Hub 15",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.46456339897517,
+        22.985569324099046
+      ]
+    },
+    "totalPiles": 20,
+    "neighbors": [
+      "ST-031",
+      "ST-027",
+      "ST-006"
+    ]
+  },
+  {
+    "stationId": "ST-016",
+    "name": "Shenzhen Hub 16",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.25523470777273,
+        22.50797913071371
+      ]
+    },
+    "totalPiles": 45,
+    "neighbors": [
+      "ST-029",
+      "ST-013",
+      "ST-017"
+    ]
+  },
+  {
+    "stationId": "ST-017",
+    "name": "Shenzhen Hub 17",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.16098814655543,
+        22.529713093766127
+      ]
+    },
+    "totalPiles": 13,
+    "neighbors": [
+      "ST-013",
+      "ST-021",
+      "ST-010"
+    ]
+  },
+  {
+    "stationId": "ST-018",
+    "name": "Shenzhen Hub 18",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.88927182883545,
+        22.412840097561613
+      ]
+    },
+    "totalPiles": 27,
+    "neighbors": [
+      "ST-014",
+      "ST-024",
+      "ST-008"
+    ]
+  },
+  {
+    "stationId": "ST-019",
+    "name": "Shenzhen Hub 19",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.0403080308871,
+        22.76525444967422
+      ]
+    },
+    "totalPiles": 30,
+    "neighbors": [
+      "ST-026",
+      "ST-025",
+      "ST-004"
+    ]
+  },
+  {
+    "stationId": "ST-020",
+    "name": "Shenzhen Hub 20",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.23080989233202,
+        22.59969250379691
+      ]
+    },
+    "totalPiles": 39,
+    "neighbors": [
+      "ST-013",
+      "ST-022",
+      "ST-029"
+    ]
+  },
+  {
+    "stationId": "ST-021",
+    "name": "Shenzhen Hub 21",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.14699338925496,
+        22.4558521278102
+      ]
+    },
+    "totalPiles": 44,
+    "neighbors": [
+      "ST-002",
+      "ST-017",
+      "ST-010"
+    ]
+  },
+  {
+    "stationId": "ST-022",
+    "name": "Shenzhen Hub 22",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.23869373016149,
+        22.633834396089416
+      ]
+    },
+    "totalPiles": 35,
+    "neighbors": [
+      "ST-020",
+      "ST-029",
+      "ST-013"
+    ]
+  },
+  {
+    "stationId": "ST-023",
+    "name": "Shenzhen Hub 23",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.78299904693452,
+        22.798930311195665
+      ]
+    },
+    "totalPiles": 41,
+    "neighbors": [
+      "ST-007",
+      "ST-026",
+      "ST-005"
+    ]
+  },
+  {
+    "stationId": "ST-024",
+    "name": "Shenzhen Hub 24",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.7657894782104,
+        22.418846550169892
+      ]
+    },
+    "totalPiles": 50,
+    "neighbors": [
+      "ST-014",
+      "ST-018",
+      "ST-032"
+    ]
+  },
+  {
+    "stationId": "ST-025",
+    "name": "Shenzhen Hub 25",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.05784541843919,
+        22.67219248539853
+      ]
+    },
+    "totalPiles": 34,
+    "neighbors": [
+      "ST-004",
+      "ST-019",
+      "ST-026"
+    ]
+  },
+  {
+    "stationId": "ST-026",
+    "name": "Shenzhen Hub 26",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.01746860705948,
+        22.79844855209604
+      ]
+    },
+    "totalPiles": 45,
+    "neighbors": [
+      "ST-019",
+      "ST-007",
+      "ST-025"
+    ]
+  },
+  {
+    "stationId": "ST-027",
+    "name": "Guangzhou Hub 27",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.46036090968009,
+        22.90574051097141
+      ]
+    },
+    "totalPiles": 44,
+    "neighbors": [
+      "ST-015",
+      "ST-031",
+      "ST-006"
+    ]
+  },
+  {
+    "stationId": "ST-028",
+    "name": "Guangzhou Hub 28",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.27008773651552,
+        23.28429936632872
+      ]
+    },
+    "totalPiles": 28,
+    "neighbors": [
+      "ST-030",
+      "ST-009",
+      "ST-033"
+    ]
+  },
+  {
+    "stationId": "ST-029",
+    "name": "Shenzhen Hub 29",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.27228955651265,
+        22.581489482531683
+      ]
+    },
+    "totalPiles": 26,
+    "neighbors": [
+      "ST-020",
+      "ST-022",
+      "ST-013"
+    ]
+  },
+  {
+    "stationId": "ST-030",
+    "name": "Guangzhou Hub 30",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.35384083730216,
+        23.28098109952603
+      ]
+    },
+    "totalPiles": 16,
+    "neighbors": [
+      "ST-009",
+      "ST-028",
+      "ST-033"
+    ]
+  },
+  {
+    "stationId": "ST-031",
+    "name": "Guangzhou Hub 31",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.419474747433,
+        23.049222395724314
+      ]
+    },
+    "totalPiles": 48,
+    "neighbors": [
+      "ST-015",
+      "ST-006",
+      "ST-027"
+    ]
+  },
+  {
+    "stationId": "ST-032",
+    "name": "Shenzhen Hub 32",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.79692942145189,
+        22.549565541036458
+      ]
+    },
+    "totalPiles": 43,
+    "neighbors": [
+      "ST-005",
+      "ST-003",
+      "ST-014"
+    ]
+  },
+  {
+    "stationId": "ST-033",
+    "name": "Guangzhou Hub 33",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.34430285401447,
+        23.199472292230112
+      ]
+    },
+    "totalPiles": 17,
+    "neighbors": [
+      "ST-009",
+      "ST-030",
+      "ST-028"
+    ]
+  },
+  {
+    "stationId": "ST-034",
+    "name": "Guangzhou Hub 34",
+    "city": "Guangzhou",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        113.51583276468058,
+        23.33936093891159
+      ]
+    },
+    "totalPiles": 29,
+    "neighbors": [
+      "ST-012",
+      "ST-009",
+      "ST-030"
+    ]
+  },
+  {
+    "stationId": "ST-035",
+    "name": "Shenzhen Hub 35",
+    "city": "Shenzhen",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        114.04041416621335,
+        22.496348636978894
+      ]
+    },
+    "totalPiles": 15,
+    "neighbors": [
+      "ST-010",
+      "ST-021",
+      "ST-002"
+    ]
+  }
+]

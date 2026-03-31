@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: afml_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_db_data:/data/db
+
+  backend:
+    build: 
+      context: ./dashboard/backend
+      dockerfile: Dockerfile
+    container_name: afml_backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27107/afml-smart-grid
+      - PORT=5000
+    depends_on:
+      - mongodb
+    volumes:
+      - ./global_meta_model.pth:/app/global_meta_model.pth
+      - ./central-server:/app/central-server
+
+  frontend:
+    build:
+      context: ./dashboard/frontend
+      dockerfile: Dockerfile
+    container_name: afml_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_db_data:
