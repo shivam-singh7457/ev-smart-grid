@@ -116,7 +116,7 @@ const App = () => {
                 )}
             </AnimatePresence>
 
-            <main className="flex-1 relative mt-16 overflow-hidden">
+            <main className="flex-1 relative mt-16 overflow-y-auto">
                 {activeTab === 'map' && (
                     <div className="w-full h-full relative z-0">
                         {stations.length > 0 ? (

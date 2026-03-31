@@ -12,7 +12,10 @@ const runInference = (inputSequence) => {
             return reject(new Error('AFML Model file (global_meta_model.pth) not found on server.'));
         }
 
-        const pythonProcess = spawn('python3', [
+        // On Windows, use 'python', otherwise 'python3'
+        const pythonCommand = process.platform === 'win32' ? 'python' : 'python3';
+        
+        const pythonProcess = spawn(pythonCommand, [
             path.join(__dirname, '../python_scripts/predict.py'),
             JSON.stringify(inputSequence)
         ]);
@@ -26,6 +29,12 @@ const runInference = (inputSequence) => {
             console.error(`Python Error: ${data}`);
         });
 
+        // Handle error event (e.g. command not found)
+        pythonProcess.on('error', (err) => {
+            console.error('Failed to start python process:', err);
+            reject(new Error(`Failed to start python process: ${err.message}`));
+        });
+
         pythonProcess.on('close', (code) => {
             if (code !== 0) {
                 reject(new Error(`Python process exited with code ${code}`));
@@ -33,6 +42,7 @@ const runInference = (inputSequence) => {
                 try {
                     resolve(JSON.parse(result));
                 } catch (e) {
+                    console.error('Failed to parse python output:', result);
                     reject(new Error('Failed to parse python output'));
                 }
             }
