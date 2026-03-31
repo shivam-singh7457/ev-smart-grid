@@ -11,7 +11,7 @@ const RecenterMap = ({ center }) => {
   return null;
 };
 
-const Map = ({ stations, onStationClick, selectedStation, demoMode }) => {
+const Map = ({ stations, onStationClick, selectedStation }) => {
   const createTechIcon = (occupancy) => {
     const isBusy = occupancy > 0.8;
     const colorClass = isBusy ? 'marker-busy' : 'marker-idle';
@@ -21,7 +21,7 @@ const Map = ({ stations, onStationClick, selectedStation, demoMode }) => {
       html: `
         <div class="relative flex items-center justify-center">
           <div class="absolute w-8 h-8 rounded-full ${isBusy ? 'bg-status-busy/20' : 'bg-status-idle/20'} animate-ping"></div>
-          <div class="relative w-4 h-4 rounded-full border-2 border-white shadow-xl ${colorClass}"></div>
+          <div class="relative w-4 h-4 rounded-full border-2 border-white/50 shadow-2xl ${colorClass}"></div>
         </div>
       `,
       iconSize: [32, 32],
@@ -53,16 +53,16 @@ const Map = ({ stations, onStationClick, selectedStation, demoMode }) => {
             }}
           >
             <Tooltip direction="top" offset={[0, -10]} opacity={1} permanent={false}>
-              <div className="glass-panel p-2 min-w-[120px] border-neon-blue/20 bg-slate-900/90 shadow-neon-blue/10">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{s.stationId}</span>
-                  <span className={`text-[10px] font-bold ${s.currentOccupancy > 0.8 ? 'text-status-busy' : 'text-status-idle'}`}>
+              <div className="glass-panel px-3 py-2 min-w-[140px] border-white/5 bg-navy-deep/90">
+                <div className="flex justify-between items-center mb-1.5">
+                  <span className="text-[9px] font-black text-slate-450 uppercase tracking-widest">{s.stationId}</span>
+                  <span className={`text-[10px] font-black ${s.currentOccupancy > 0.8 ? 'text-status-busy' : 'text-neon-emerald'}`}>
                     {(s.currentOccupancy * 100).toFixed(0)}%
                   </span>
                 </div>
                 <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
                   <div 
-                    className={`h-full transition-all duration-500 ${s.currentOccupancy > 0.8 ? 'bg-status-busy' : 'bg-status-idle'}`}
+                    className={`h-full transition-all duration-700 ${s.currentOccupancy > 0.8 ? 'bg-status-busy shadow-[0_0_8px_rgba(239,68,68,0.5)]' : 'bg-neon-emerald shadow-[0_0_8px_rgba(16,185,129,0.5)]'}`}
                     style={{ width: `${s.currentOccupancy * 100}%` }}
                   />
                 </div>
@@ -74,8 +74,8 @@ const Map = ({ stations, onStationClick, selectedStation, demoMode }) => {
         <RecenterMap center={selectedStation ? [selectedStation.location.coordinates[1], selectedStation.location.coordinates[0]] : null} />
       </MapContainer>
 
-      {/* Decorative Overlay */}
-      <div className="absolute inset-0 pointer-events-none border-[24px] border-navy-dark/40 z-10 transition-opacity duration-500 group-hover:opacity-20"></div>
+      {/* Decorative Gradient Overlay */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy-deep to-transparent pointer-events-none z-10 transition-opacity duration-500 opacity-60"></div>
     </div>
   );
 };

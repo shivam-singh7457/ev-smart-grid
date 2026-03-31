@@ -7,13 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        'navy-dark': '#0f172a',
-        'slate-tech': '#1e293b',
-        'neon-cyan': '#00f2fe',
-        'neon-blue': '#4facfe',
+        'navy-deep': '#020617',
+        'slate-glass': 'rgba(15, 23, 42, 0.7)',
+        'neon-emerald': '#10b981',
+        'arctic-violet': '#8b5cf6',
         'status-idle': '#10b981',
         'status-busy': '#ef4444',
-        'meta-gold': '#f59e0b',
+        'slate-450': '#94a3b8',
       },
       animation: {
         'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
